@@ -126,8 +126,7 @@ func main() {
 
 	baseUrl, err = url.Parse(APIURL)
 	if err != nil {
-		log.Print(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
 	err = sentry.Init(sentry.ClientOptions{

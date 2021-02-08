@@ -25,7 +25,7 @@ Config is writed in yaml
 sentry:
   dsn: "https://sentry.io"
 server:
-  address: ":9233"
+  address: ":9234"
 free:
   user: "xxxxxxx"
   pass: "yyyyyyy"
