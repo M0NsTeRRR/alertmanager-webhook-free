@@ -24,6 +24,8 @@ var (
 	configPath = flag.String("config", "", "Path to config")
 
 	baseUrl = &url.URL{}
+
+	version = "development"
 )
 
 type config struct {
@@ -116,6 +118,8 @@ func newConfig(path string, config *config) error {
 }
 
 func main() {
+	log.Printf("Starting %s %s", os.Args[0], version)
+
 	flag.Parse()
 
 	err := newConfig(*configPath, &cfg)
@@ -131,6 +135,7 @@ func main() {
 
 	err = sentry.Init(sentry.ClientOptions{
 		Dsn: cfg.Sentry.Dsn,
+		Release: version,
 	})
 	if err != nil {
 		log.Fatal(err)
